@@ -67,6 +67,9 @@
                       <a href="{% url 'update' i.todo_name %}">
                         <button type="submit" class="btn btn-success ms-1">Finalizar</button>
                       </a>
+                      <a href="{% url 'modify' i.todo_name %}">
+                        <button type="submit" class="btn btn-warning ms-1">Modificar</button>
+                      </a>
                     </td>
                   </tr>
                   {% endfor %}
