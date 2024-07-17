@@ -83,3 +83,16 @@ def Update(request, name):
     get_todo.status = True
     get_todo.save()
     return redirect('home-page')
+
+@login_required
+def Modifytask(request, name):
+    get_todo = get_object_or_404(todo, user=request.user, todo_name=name)
+    if request.method == 'POST':
+        new_task_name = request.POST.get('new_task_name')
+        get_todo.todo_name = new_task_name
+        get_todo.save()
+        return redirect('home-page')
+    context = {
+        'todo': get_todo
+    }
+    return render(request, 'Almacenamiento/Modify.html', context)
